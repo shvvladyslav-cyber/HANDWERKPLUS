@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Handwerk+ — Admin</title>
+  <meta name="theme-color" content="#0a0f22" />
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="manifest" href="../manifest.json">
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../#home">
+        <div class="logo" aria-hidden="true"></div>
+        <span id="brandName">Handwerk+</span>
+      </a>
+      <div class="nav-links">
+        <a href="../#home">← Site</a>
+      </div>
+      <div class="lang">
+        <select id="langSelect" aria-label="Language"></select>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="card">
+      <h1 id="title" class="section-title">Admin</h1>
+      <p id="sub" class="section-sub"></p>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <label>
+          <div id="lId" class="mini"></div>
+          <input id="leadId" placeholder="HW-0001" />
+        </label>
+
+        <label>
+          <div id="lStatus" class="mini"></div>
+          <select id="status"></select>
+        </label>
+
+        <label style="grid-column: span 2">
+          <div id="lNote" class="mini"></div>
+          <input id="note" placeholder="..." />
+        </label>
+
+        <label style="grid-column: span 2">
+          <div id="lSecret" class="mini"></div>
+          <input id="secret" placeholder="optional" />
+        </label>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+        <button id="btn" type="button">Update</button>
+        <button id="demo" class="secondary" type="button">Demo</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <div class="t">Title</div>
+    <div class="d">Desc</div>
+  </div>
+
+  <script src="../config.js"></script>
+  <script>
+  (async function(){
+    const cfg = window.HANDWERKPLUS || {};
+    const strings = await fetch('../i18n/strings.json').then(r=>r.json());
+    const year = new Date().getFullYear();
+    const state = { lang: (new URLSearchParams(location.search).get('lang')) || localStorage.getItem('lang') || cfg.DEFAULT_LANG || 'de' };
+    if(!strings[state.lang]) state.lang='de';
+
+    const $ = (s, el=document)=>el.querySelector(s);
+    const $$ = (s, el=document)=>Array.from(el.querySelectorAll(s));
+
+    function t(path){
+      const parts = path.split('.');
+      let cur = strings[state.lang];
+      for(const p of parts){
+        if(cur && Object.prototype.hasOwnProperty.call(cur,p)) cur=cur[p];
+        else return path;
+      }
+      if(typeof cur === 'string') return cur.replace('{year}', String(year));
+      return cur;
+    }
+
+    function setLang(lang){
+      if(!strings[lang]) return;
+      state.lang=lang;
+      localStorage.setItem('lang', lang);
+      render();
+    }
+
+    function toast(title, desc){
+      const el = $('#toast');
+      $('.t', el).textContent = title;
+      $('.d', el).textContent = desc;
+      el.classList.add('show');
+      setTimeout(()=>el.classList.remove('show'), 4200);
+    }
+
+    function render(){
+      document.documentElement.lang = state.lang;
+      $('#brandName').textContent = cfg.BRAND || 'Handwerk+';
+      $('#title').textContent = t('admin.title');
+      $('#sub').textContent = t('admin.subtitle');
+
+      const f = t('admin.fields');
+      $('#lId').textContent = f.id;
+      $('#lStatus').textContent = f.status;
+      $('#lNote').textContent = f.note;
+      $('#lSecret').textContent = f.secret;
+
+      const sel = $('#langSelect');
+      sel.innerHTML='';
+      (cfg.SUPPORTED_LANGS||['de','ua','ru']).forEach(code=>{
+        const opt=document.createElement('option');
+        opt.value=code;
+        opt.textContent = strings[code]?.langName || code.toUpperCase();
+        sel.appendChild(opt);
+      });
+      sel.value=state.lang;
+      sel.onchange = (e)=>setLang(e.target.value);
+
+      const st = $('#status');
+      st.innerHTML='';
+      (t('admin.statuses')||['NEW','IN_WORK','DONE','CANCELED']).forEach(s=>{
+        const opt=document.createElement('option'); opt.value=s; opt.textContent=s;
+        st.appendChild(opt);
+      });
+
+      $('#btn').textContent = t('admin.btn');
+      $('#demo').textContent = 'Demo';
+    }
+
+    async function updateStatus(id, status, note, secret){
+      const url = cfg.APPS_SCRIPT_URL;
+      if(!url || url.includes('PASTE_')) throw new Error('APPS_SCRIPT_URL not set');
+      const res = await fetch(url, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'updateStatus', id, status, note, secret, lang: state.lang })
+      });
+      const data = await res.json().catch(()=> ({}));
+      if(!res.ok || data.ok === false) throw new Error(data.error || 'Request failed');
+      return data;
+    }
+
+    $('#btn').onclick = async ()=>{
+      try{
+        await updateStatus($('#leadId').value.trim(), $('#status').value, $('#note').value.trim(), $('#secret').value.trim());
+        toast('OK', t('admin.ok'));
+      }catch(err){
+        toast('Error', t('admin.err'));
+        console.warn(err);
+      }
+    };
+
+    $('#demo').onclick = ()=>{
+      toast('Demo', 'Connect Apps Script to enable updates');
+    };
+
+    render();
+  })();
+  </script>
+</body>
+</html>
