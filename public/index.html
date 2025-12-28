@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Handwerk+ — Handyman per Abo (DE/UA/RU)</title>
+  <meta name="description" content="Handwerk+ — Handyman-Services in Deutschland per Abo. Mehrsprachig: DE/UA/RU. Anfrage in 1 Minute." />
+  <meta name="theme-color" content="#0a0f22" />
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="Home">
+        <div class="logo" aria-hidden="true"></div>
+        <span id="brandName">Handwerk+</span>
+      </a>
+
+      <div class="nav-links">
+        <a id="navHome" href="#home">Start</a>
+        <a id="navServices" href="#services">Leistungen</a>
+        <a id="navPricing" href="#pricing">Abo</a>
+        <a id="navPartner" href="#partner">Franchise</a>
+        <a id="navCabinet" href="./cabinet/">Kundenkonto</a>
+        <a id="navAdmin" href="./admin/">Admin</a>
+      </div>
+
+      <div class="lang">
+        <select id="langSelect" aria-label="Language"></select>
+        <span id="installBtnWrap" style="display:none">
+          <button id="installBtn" class="secondary" type="button">Install</button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div>
+            <h1 id="heroTitle" class="h-title">Handwerk+ — Handyman per Abo</h1>
+            <p id="heroSub" class="h-sub">Schnell. Zuverlässig. Transparent.</p>
+            <div class="hero-actions">
+              <a href="#lead"><button id="heroCta" type="button">Jetzt Anfrage senden</button></a>
+              <a href="#partner"><button id="heroCta2" class="secondary" type="button">Partner werden</button></a>
+            </div>
+            <div id="badges" class="badges" aria-label="Badges"></div>
+          </div>
+
+          <div class="card">
+            <div style="font-weight:900; font-size:18px;">DE / UA / RU</div>
+            <div class="mini" style="margin-top:6px;">
+              Starter-Kit für Franchise: Website + PWA + Kundenkonto + Admin + Apps Script API.
+              <br><br>
+              <span class="pill">Lead → CRM</span>
+              <span class="pill warn">Franchise</span>
+            </div>
+            <div class="kpi">
+              <div class="pill">Standard</div>
+              <div class="pill">Premium</div>
+              <div class="pill warn">VIP</div>
+            </div>
+            <div class="mini" style="margin-top:10px;">
+              ⚠️ Rechtliches: Impressum/Datenschutz/AGB bitte mit юристом или генератором для DE заполнить.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" style="margin-top:18px">
+      <h2 id="servicesTitle" class="section-title"></h2>
+      <div id="servicesList" class="cards3"></div>
+    </section>
+
+    <section id="pricing" style="margin-top:22px">
+      <h2 id="pricingTitle" class="section-title"></h2>
+      <p id="pricingNote" class="section-sub"></p>
+      <div id="pricingCards" class="cards3"></div>
+      <p id="pricingLegal" class="mini" style="margin-top:12px"></p>
+    </section>
+
+    <section id="lead" style="margin-top:22px">
+      <div class="card">
+        <h2 id="leadTitle" class="section-title"></h2>
+        <p id="leadSub" class="section-sub"></p>
+
+        <form id="leadForm" class="grid" style="grid-template-columns:1fr 1fr">
+          <label><div id="fName" class="mini"></div><input id="leadName" required placeholder="..." /></label>
+          <label><div id="fPhone" class="mini"></div><input id="leadPhone" required placeholder="+49..." /></label>
+
+          <label style="grid-column: span 2"><div id="fEmail" class="mini"></div><input id="leadEmail" placeholder="..." /></label>
+
+          <label><div id="fCity" class="mini"></div><input id="leadCity" required placeholder="Kassel / 34117" /></label>
+          <label><div id="fAddress" class="mini"></div><input id="leadAddress" placeholder="..." /></label>
+
+          <label><div id="fCategory" class="mini"></div><select id="leadCategory"></select></label>
+          <label><div id="fPlan" class="mini"></div><select id="leadPlan"></select></label>
+
+          <label style="grid-column: span 2"><div id="fDetails" class="mini"></div><textarea id="leadDetails" required placeholder="..."></textarea></label>
+          <label style="grid-column: span 2"><div id="fPhotos" class="mini"></div><input id="leadPhotos" placeholder="Google Drive / WhatsApp link" /></label>
+
+          <div style="grid-column: span 2; display:flex; gap:10px; flex-wrap:wrap">
+            <button id="leadSubmit" type="submit">Anfrage senden</button>
+            <a class="mini" href="./cabinet/" style="align-self:center; text-decoration:underline">→ Kundenkonto</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="partner" style="margin-top:22px">
+      <div class="card">
+        <h2 id="partnerTitle" class="section-title"></h2>
+        <p id="partnerSub" class="section-sub"></p>
+
+        <h3 id="partnerHowTitle" style="margin:12px 0 10px"></h3>
+        <div id="partnerSteps" class="cards3"></div>
+
+        <div style="height:16px"></div>
+        <h3 id="partnerFormTitle" style="margin:0 0 10px"></h3>
+
+        <form id="partnerForm" class="grid" style="grid-template-columns:1fr 1fr">
+          <label><div id="pCompanyL" class="mini"></div><input id="pCompany" required></label>
+          <label><div id="pEmailL" class="mini"></div><input id="pEmail" required></label>
+
+          <label><div id="pPhoneL" class="mini"></div><input id="pPhone" required></label>
+          <label><div id="pCityL" class="mini"></div><input id="pCity" required></label>
+
+          <label><div id="pSkillsL" class="mini"></div><input id="pSkills" placeholder="Möbel, Sanitär, ..."></label>
+          <label><div id="pToolsL" class="mini"></div><input id="pTools" placeholder="Auto, Werkzeug, ..."></label>
+
+          <label style="grid-column: span 2"><div id="pLegalL" class="mini"></div><select id="pLegal"></select></label>
+          <label style="grid-column: span 2"><div id="pMessageL" class="mini"></div><textarea id="pMessage" required></textarea></label>
+
+          <div style="grid-column: span 2; display:flex; gap:10px; flex-wrap:wrap">
+            <button id="partnerSubmit" type="submit">Senden</button>
+            <div id="partnerOk" class="mini" style="align-self:center"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>
+        <a id="fImpressum" href="./legal/impressum.html">Impressum</a> ·
+        <a id="fPrivacy" href="./legal/datenschutz.html">Datenschutz</a> ·
+        <a id="fTerms" href="./legal/agb.html">AGB</a>
+      </div>
+      <div id="fCopy">© 2025 Handwerk+</div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <div class="t">Title</div>
+    <div class="d">Desc</div>
+  </div>
+
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
