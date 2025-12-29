@@ -4,72 +4,78 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Datenschutzerklärung — Handwerk+</title>
-  <meta name="theme-color" content="#0a0f22" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <main class="container">
-    <article class="card">
+  <div class="bg"></div>
+  <main class="wrap">
+    <header class="card">
       <h1>Datenschutzerklärung</h1>
-      <p class="muted">
-        Diese Datenschutzerklärung informiert gemäß Art. 13 DSGVO über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten.
-      </p>
+      <p class="muted">Informationen nach Art. 13/14 DSGVO</p>
+      <p><a class="btnGhost" href="./index.html">← Zurück</a></p>
+    </header>
 
+    <section class="card">
       <h2>1. Verantwortlicher</h2>
       <p>
-        <strong>[Vorname Nachname / Firma]</strong><br/>
-        Straße, Hausnr., PLZ Ort, Deutschland<br/>
-        E-Mail: <strong>[kontakt@hwerkplus.de]</strong>
+        Verantwortlich für die Datenverarbeitung:<br>
+        <strong>[Vorname Nachname / Firma]</strong><br>
+        <strong>[Adresse]</strong><br>
+        E-Mail: <strong>[email@domain.de]</strong><br>
+        Telefon: <strong>[+49 ...]</strong>
       </p>
 
-      <h2>2. Hosting (GitHub Pages)</h2>
+      <h2>2. Hosting</h2>
       <p class="muted">
-        Diese Website wird über GitHub Pages bereitgestellt. Beim Aufruf können technisch notwendige Daten (z. B. IP-Adresse, Zeitpunkt, angeforderte Datei)
-        in Server-Logfiles verarbeitet werden, um den Betrieb und die Sicherheit zu gewährleisten.
+        Diese Website wird über GitHub Pages ausgeliefert. Beim Aufruf der Website können Server-Logfiles
+        (z. B. IP-Adresse, Datum/Uhrzeit, abgerufene Datei, User-Agent) verarbeitet werden, um den sicheren
+        Betrieb zu gewährleisten.
       </p>
 
-      <h2>3. Zugriffsdaten / Logfiles</h2>
+      <h2>3. Server-Logfiles</h2>
       <p class="muted">
-        Beim Besuch werden technisch notwendige Informationen verarbeitet (z. B. Browsertyp, Betriebssystem, Referrer-URL, IP-Adresse).
-        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an sicherem Betrieb).
+        Zweck: Betrieb, Sicherheit und Fehleranalyse. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+        Logfiles werden in der Regel kurzzeitig gespeichert und anschließend gelöscht/aggregiert.
       </p>
 
-      <h2>4. Kontaktformular</h2>
+      <h2>4. Kontaktaufnahme</h2>
       <p class="muted">
-        Wenn du uns über das Formular kontaktierst, verarbeiten wir die von dir eingegebenen Daten zur Bearbeitung der Anfrage.
-        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) bzw. lit. f DSGVO.
-        <br/><br/>
-        Hinweis: Aktuell ist das Formular in dieser Demo ohne Backend. Sobald Telegram/CRM aktiv ist, wird dieser Abschnitt aktualisiert.
+        Wenn du uns kontaktierst (z. B. per Formular/Telefon/E-Mail/Telegram), verarbeiten wir deine Angaben zur
+        Bearbeitung der Anfrage. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) bzw.
+        Art. 6 Abs. 1 lit. f DSGVO.
       </p>
 
-      <h2>5. Cookies / Local Storage / PWA</h2>
+      <h2>5. Cookies / Local Storage</h2>
       <p class="muted">
-        Diese Website kann für die Offline-Funktion (PWA) Daten im Cache/Local Storage speichern (Service Worker).
-        Dies dient der Stabilität/Offline-Nutzung. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
+        Diese Website kann technisch notwendige Speicherungen nutzen (z. B. Service Worker Cache für Offline-Funktion).
+        Es erfolgt keine Profilbildung zu Werbezwecken. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
       </p>
 
-      <h2>6. Deine Rechte</h2>
-      <ul class="list">
-        <li>Auskunft (Art. 15 DSGVO)</li>
-        <li>Berichtigung (Art. 16 DSGVO)</li>
-        <li>Löschung (Art. 17 DSGVO)</li>
-        <li>Einschränkung (Art. 18 DSGVO)</li>
-        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-        <li>Widerspruch (Art. 21 DSGVO)</li>
-        <li>Beschwerde bei einer Aufsichtsbehörde</li>
-      </ul>
-
-      <h2>7. Kontakt Datenschutz</h2>
+      <h2>6. Service Worker / Offline-Cache</h2>
       <p class="muted">
-        Für Datenschutzanfragen: <strong>[kontakt@hwerkplus.de]</strong>
+        Für die PWA-Funktion kann ein Service Worker Ressourcen im Browser zwischenspeichern, um Offline-Nutzung zu
+        ermöglichen. Dabei werden keine besonderen Kategorien personenbezogener Daten verarbeitet.
       </p>
 
-      <div class="row" style="margin-top:14px">
-        <a class="btn ghost" href="/">← Zurück</a>
-        <a class="btn ghost" href="/impressum.html">Impressum</a>
-        <a class="btn ghost" href="/agb.html">AGB</a>
-      </div>
-    </article>
+      <h2>7. Empfänger / Drittland</h2>
+      <p class="muted">
+        Abhängig von der technischen Bereitstellung kann eine Verarbeitung durch Dienstleister (z. B. Hosting/CDN)
+        erfolgen. Falls Daten in Drittländer übertragen werden, erfolgt dies auf Grundlage geeigneter Garantien
+        (z. B. Standardvertragsklauseln), soweit erforderlich.
+      </p>
+
+      <h2>8. Deine Rechte</h2>
+      <p class="muted">
+        Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit
+        sowie Widerspruch (Art. 15–21 DSGVO). Außerdem besteht ein Beschwerderecht bei einer Aufsichtsbehörde.
+      </p>
+
+      <h2>9. Aktualität</h2>
+      <p class="muted">
+        Diese Datenschutzerklärung kann angepasst werden, wenn sich Rechtslage oder Dienste ändern.
+        Stand: <strong>[Datum]</strong>
+      </p>
+    </section>
   </main>
 </body>
 </html>
