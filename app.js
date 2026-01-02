@@ -113,7 +113,15 @@
       if (typeof val === "string") el.textContent = val;
     });
 
-    try { localStorage.setItem("hp_lang", lang); } catch {}
+    try { localStorage.setItem("hp_lang", lang);
+
+    // highlight active language button
+    $$("[data-set-lang]").forEach(b => {
+      const isOn = b.getAttribute("data-set-lang") === lang;
+      b.classList.toggle("is-active", isOn);
+      b.setAttribute("aria-pressed", isOn ? "true" : "false");
+    });
+ } catch {}
   }
 
   function initLang() {

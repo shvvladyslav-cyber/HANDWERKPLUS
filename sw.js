@@ -1,5 +1,5 @@
 // sw.js
-const CACHE = "handwerkplus-v5";
+const CACHE = "handwerkplus-v6";
 const ASSETS = [
   "/",
   "/index.html",
