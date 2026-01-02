@@ -1,57 +1,44 @@
+// app.js
 (() => {
-  // year
-  const y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
+  const $ = (s, el=document) => el.querySelector(s);
+  const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
 
-  // PWA install
-  let deferredPrompt = null;
-  const installBtn = document.getElementById('installBtn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    if (installBtn) installBtn.style.display = 'inline-flex';
+  // Smooth scroll for nav anchors
+  $$(".pill[data-scroll]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const target = btn.getAttribute("data-scroll");
+      const el = document.getElementById(target);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+      history.replaceState(null, "", `#${target}`);
+    });
   });
 
+  // Install banner
+  let deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installBtn = $("#btnInstall");
+    if (installBtn) installBtn.style.display = "inline-flex";
+  });
+
+  const installBtn = $("#btnInstall");
   if (installBtn) {
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) {
-        alert('Install ist aktuell nicht verfügbar (Safari/или уже installiert).');
-        return;
-      }
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
       deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
+      await deferredPrompt.userChoice.catch(()=>{});
       deferredPrompt = null;
-      installBtn.style.display = 'none';
+      installBtn.style.display = "none";
     });
   }
 
-  // Service Worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(() => {});
-    });
-  }
-
-  // Demo contact handler (no backend)
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = (data.get('name') || '').toString().trim();
-      const phone = (data.get('phone') || '').toString().trim();
-      const msg = (data.get('msg') || '').toString().trim();
-
-      const text =
-        `Handwerk+ Anfrage%n` +
-        `Name: ${name}%n` +
-        `Telefon: ${phone}%n` +
-        `Nachricht: ${msg}`;
-
-      alert('Gesendet (Demo). Далее подключим Telegram/Email отправку.');
-      form.reset();
-      console.log(text.replaceAll('%n', '\n'));
+  // SW
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js").catch(()=>{});
     });
   }
 })();

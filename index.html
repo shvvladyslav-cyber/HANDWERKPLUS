@@ -3,402 +3,146 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b0f1f" />
+  <title>Handwerk+ — Handyman per Abo (Deutschland)</title>
+  <meta name="description" content="Handwerk+ in Deutschland: Handyman per Abo. Schnell. Zuverlässig. Transparent. Für Kassel & Umgebung — skalierbar als Franchise." />
+  <meta name="theme-color" content="#0a0f22" />
   <meta name="color-scheme" content="dark" />
 
-  <title>Handwerk+ — Handyman per Abo</title>
-  <meta name="description" content="Handwerk+ — Handyman per Abo. Schnell. Zuverlässig. Transparent. Für Kassel & Umgebung. Skalierbar als Franchise." />
-
   <!-- PWA -->
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <link rel="icon" href="/icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
-
 <body>
-  <a class="skip" href="#main">Zum Inhalt</a>
-
-  <header class="top">
-    <div class="top__inner">
-      <div class="brand">
-        <div class="brand__mark" aria-hidden="true"></div>
-        <div class="brand__text">
-          <div class="brand__name">Handwerk+</div>
-          <div class="brand__tag">Handyman per Abo</div>
+  <div class="container">
+    <header class="nav">
+      <a class="brand" href="/" aria-label="Handwerk+">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <b>Handwerk+</b>
+          <span>Handyman per Abo</span>
         </div>
-      </div>
+      </a>
 
-      <nav class="nav" aria-label="Navigation">
-        <a class="nav__link" href="#start">Start</a>
-        <a class="nav__link" href="#leistungen">Leistungen</a>
-        <a class="nav__link" href="#abo">Abo</a>
-        <a class="nav__link" href="#kontakt">Kontakt</a>
+      <nav class="pills" aria-label="Navigation">
+        <a class="pill" href="#start" data-scroll="start">Start</a>
+        <a class="pill" href="#leistungen" data-scroll="leistungen">Leistungen</a>
+        <a class="pill" href="#abo" data-scroll="abo">Abo</a>
+        <a class="pill" href="#kontakt" data-scroll="kontakt">Kontakt</a>
+        <a class="pill" href="#partner" data-scroll="partner">Franchise/Partner</a>
+        <a class="pill" href="/cabinet/" title="Kundenkonto (optional)">Kundenkonto</a>
+        <a class="pill" href="/admin/" title="Admin (optional)">Admin</a>
+        <button class="pill" id="btnInstall" style="display:none" type="button">Install</button>
+        <a class="pill primary" href="#kontakt" data-scroll="kontakt">Jetzt Anfrage</a>
       </nav>
+    </header>
 
-      <div class="top__actions">
-        <a class="chip" href="#franchise" title="Franchise/Partner">
-          <span class="chip__ico" aria-hidden="true">
-            <!-- handshake -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M8 12l2.2-2.2a2 2 0 012.8 0L16 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M2 12l4-4 4 4-4 4-4-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M22 12l-4-4-4 4 4 4 4-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M9 13l1 1a2 2 0 002.8 0l1.2-1.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </span>
-          Franchise/Partner
-        </a>
+    <main>
+      <section id="start" class="hero">
+        <h1>Handwerk+ — Handyman per Abo</h1>
+        <p>Schnell. Zuverlässig. Transparent. Für Kassel &amp; Umgebung — skalierbar als Franchise.</p>
 
-        <a class="chip" href="#konto" title="Kundenkonto">
-          <span class="chip__ico" aria-hidden="true">
-            <!-- user -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 12a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="2"/>
-              <path d="M4 20a8 8 0 0116 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </span>
-          Kundenkonto
-        </a>
-
-        <button id="installBtn" class="chip chip--ghost" type="button" hidden>
-          <span class="chip__ico" aria-hidden="true">
-            <!-- download -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </span>
-          Install
-        </button>
-
-        <a class="cta" href="#anfrage">
-          <span class="cta__shine" aria-hidden="true"></span>
-          Jetzt Anfrage
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- HERO -->
-    <section id="start" class="hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-
-      <div class="wrap">
-        <div class="card hero__card">
-          <h1 class="h1">Handwerk+ — Handyman per Abo</h1>
-          <p class="lead">
-            Schnell. Zuverlässig. Transparent. Für Kassel &amp; Umgebung — skalierbar als Franchise.
-          </p>
-
-          <div class="hero__buttons">
-            <a class="btn btn--primary" href="#anfrage">
-              <span class="btn__ico" aria-hidden="true">
-                <!-- bolt -->
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              Jetzt Anfrage senden
-            </a>
-
-            <a class="btn btn--soft" href="#franchise">
-              <span class="btn__ico" aria-hidden="true">
-                <!-- rocket -->
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M14 10l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 2c6 2 9 7 10 10-3 1-8 4-10 10-2-6-7-9-10-10 1-3 4-8 10-10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M7 17l-2 5 5-2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              Partner werden
-            </a>
-          </div>
-
-          <div class="badges">
-            <span class="badge">24–48h Rückmeldung</span>
-            <span class="badge">Fixe Abo-Preise</span>
-            <span class="badge">Geprüfte Partner</span>
-            <span class="badge">Mehrsprachig: DE/UA/RU</span>
-          </div>
+        <div class="cta">
+          <a class="pill primary" href="#kontakt" data-scroll="kontakt">Jetzt Anfrage senden</a>
+          <a class="pill" href="#partner" data-scroll="partner">Partner werden</a>
         </div>
 
-        <!-- SECTIONS -->
+        <div class="badges" aria-label="Highlights">
+          <div class="badge">24–48h Rückmeldung</div>
+          <div class="badge">Fixe Abo-Preise</div>
+          <div class="badge">Geprüfte Partner</div>
+          <div class="badge">Mehrsprachig: DE/UA/RU</div>
+        </div>
+      </section>
+
+      <section id="leistungen" class="section">
         <div class="grid">
-          <section id="leistungen" class="card card--hover">
-            <h2 class="h2">Leistungen</h2>
-            <ul class="list">
-              <li>Montage &amp; Möbelaufbau</li>
-              <li>Kleine Reparaturen (Haushalt)</li>
-              <li>Bohrarbeiten, Regale, TV-Halter</li>
-              <li>Fugen, Silikon, Ausbesserungen</li>
-              <li>Umzug-Hilfe (light)</li>
+          <div class="card">
+            <h3>Alltag & Wohnung</h3>
+            <p>Montage, kleine Reparaturen, Silikon, Türen/Schlösser, Lampen, Regale.</p>
+            <ul>
+              <li>Aufbau & Montage</li>
+              <li>Kleine Elektro-/Sanitärarbeiten (ohne Meisterpflicht)</li>
+              <li>Transport & Entsorgung (nach Absprache)</li>
             </ul>
-            <p class="muted">Hinweis: Elektro-/Gas-/Wasser-Arbeiten nur nach geltenden Vorschriften oder durch Fachbetriebe.</p>
-          </section>
+          </div>
 
-          <section id="abo" class="card card--hover">
-            <h2 class="h2">Abo-Modelle</h2>
-            <div class="tiers">
-              <div class="tier">
-                <div class="tier__top">
-                  <div class="tier__name">Standard</div>
-                  <div class="tier__price">ab XX€</div>
-                </div>
-                <div class="tier__desc">Für kleine Aufgaben &amp; Routine-Hilfe.</div>
-                <ul class="mini">
-                  <li>Monatliche Stundenpakete</li>
-                  <li>Planbare Termine</li>
-                  <li>Support DE/UA/RU</li>
-                </ul>
-              </div>
-
-              <div class="tier tier--hot">
-                <div class="tier__top">
-                  <div class="tier__name">Premium</div>
-                  <div class="tier__price">ab XX€</div>
-                </div>
-                <div class="tier__desc">Schneller + Priorität + mehr Flexibilität.</div>
-                <ul class="mini">
-                  <li>Priority-Slots</li>
-                  <li>Mehr Leistungen inkl.</li>
-                  <li>1× Notfall-Slot/Monat</li>
-                </ul>
-              </div>
-
-              <div class="tier">
-                <div class="tier__top">
-                  <div class="tier__name">VIP</div>
-                  <div class="tier__price">ab XX€</div>
-                </div>
-                <div class="tier__desc">Maximale Verfügbarkeit &amp; Premium-Support.</div>
-                <ul class="mini">
-                  <li>Express-Termine</li>
-                  <li>Erweiterte SLA</li>
-                  <li>Partner-Netzwerk</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="note">
-              <strong>Tipp:</strong> Preise (XX€) заменишь на свои — и можно включать online-оплату позже.
-            </div>
-          </section>
-
-          <section id="franchise" class="card card--hover">
-            <h2 class="h2">Franchise / Partner</h2>
-            <p class="p">
-              Skalierbares Modell: lokale Partner, стандарты качества, единая витрина и заявки через сайт/PWA.
-            </p>
-            <div class="actions">
-              <a class="btn btn--soft" href="#anfrage">Partner-Anfrage</a>
-              <a class="btn btn--ghost" href="#kontakt">Kontakt</a>
-            </div>
-          </section>
-
-          <section id="konto" class="card card--hover">
-            <h2 class="h2">Kundenkonto</h2>
-            <p class="p muted">
-              Сейчас это “плейсхолдер”. Позже подключим CRM/Google Sheets/Telegram.
-            </p>
-            <div class="actions">
-              <a class="btn btn--ghost" href="#anfrage">Neue Anfrage</a>
-              <a class="btn btn--ghost" href="#abo">Abo wählen</a>
-            </div>
-          </section>
+          <div class="card">
+            <h3>Umzug & Service</h3>
+            <p>Hilfe beim Umzug, Möbel zerlegen/aufbauen, Bohrarbeiten, kleinere Renovierung.</p>
+            <ul>
+              <li>Termin + Festpreis (nach Angebot)</li>
+              <li>Schnelle Kommunikation</li>
+              <li>Dokumentierte Leistungen</li>
+            </ul>
+          </div>
         </div>
+      </section>
 
-        <!-- REQUEST -->
-        <section id="anfrage" class="card card--hover form">
-          <h2 class="h2">Anfrage senden</h2>
-          <p class="p muted">Быстро. Без регистрации. Мы ответим в течение 24–48 часов.</p>
+      <section id="abo" class="section">
+        <div class="grid">
+          <div class="card">
+            <h3>Standard</h3>
+            <p>Für kleine Aufgaben im Alltag.</p>
+            <ul>
+              <li>Reaktionszeit: 48h</li>
+              <li>1 Besuch / Monat</li>
+              <li>Priorität: normal</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Premium / VIP</h3>
+            <p>Wenn es schneller gehen muss.</p>
+            <ul>
+              <li>Reaktionszeit: 24h</li>
+              <li>2–4 Besuche / Monat</li>
+              <li>Priorität: hoch</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-          <form id="reqForm" autocomplete="on">
-            <div class="row">
-              <label class="field">
-                <span>Name</span>
-                <input name="name" type="text" placeholder="Vor- und Nachname" required />
-              </label>
-
-              <label class="field">
-                <span>Telefon / WhatsApp</span>
-                <input name="phone" type="tel" placeholder="+49…" required />
-              </label>
-            </div>
-
-            <div class="row">
-              <label class="field">
-                <span>PLZ / Ort</span>
-                <input name="city" type="text" placeholder="z.B. 34117 Kassel" required />
-              </label>
-
-              <label class="field">
-                <span>Sprache</span>
-                <select name="lang" required>
-                  <option value="DE">Deutsch</option>
-                  <option value="UA">Українська</option>
-                  <option value="RU">Русский</option>
-                </select>
-              </label>
-            </div>
-
-            <label class="field">
-              <span>Worum geht’s?</span>
-              <textarea name="msg" rows="5" placeholder="Kurz beschreiben (z.B. Möbelaufbau, Reparatur…)" required></textarea>
-            </label>
-
-            <div class="form__bottom">
-              <button class="btn btn--primary" type="submit">
-                <span class="btn__ico" aria-hidden="true">
-                  <!-- send -->
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Senden
-              </button>
-
-              <div class="hint">
-                <span class="dot"></span>
-                <span>Wir melden uns schnell zurück.</span>
-              </div>
-            </div>
-          </form>
-
-          <div class="divider"></div>
-
-          <div class="quick">
-            <div class="quick__title">Schnellkontakt</div>
-            <div class="quick__buttons">
-              <a class="qbtn" id="tgBtn" href="#" rel="noopener">
-                <span class="qbtn__ico" aria-hidden="true">
-                  <!-- telegram -->
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M21 3L3.8 10.2c-.8.3-.8 1.4.1 1.7l4.4 1.5 1.7 5.2c.2.7 1.1.9 1.6.4l2.6-2.4 4.8 3.5c.6.4 1.5.1 1.7-.7L23 4.6c.2-.9-.8-1.7-2-.6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Telegram
-              </a>
-
-              <a class="qbtn" id="mailBtn" href="#">
-                <span class="qbtn__ico" aria-hidden="true">
-                  <!-- mail -->
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="2" />
-                    <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                E-Mail
-              </a>
-
-              <a class="qbtn" id="callBtn" href="#">
-                <span class="qbtn__ico" aria-hidden="true">
-                  <!-- phone -->
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M6 3h4l2 5-3 2c1.5 3 3.5 5 6.5 6.5l2-3 5 2v4c0 1-1 2-2 2C9 22 2 15 2 5c0-1 1-2 2-2h2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Anrufen
-              </a>
+      <section id="partner" class="section">
+        <div class="grid">
+          <div class="card" style="grid-column:span 12">
+            <h3>Franchise / Partner</h3>
+            <p>Du bist Handwerker oder Service-Profi? Werde Partner — wir liefern Leads & Prozesse.</p>
+            <div class="cta" style="margin-top:12px">
+              <a class="pill" href="#kontakt" data-scroll="kontakt">Partner-Anfrage</a>
+              <a class="pill" href="https://t.me/uhu.help" target="_blank" rel="noopener">Telegram</a>
             </div>
           </div>
+        </div>
+      </section>
 
-        </section>
-
-        <!-- CONTACT -->
-        <section id="kontakt" class="footer card">
-          <div class="footer__grid">
-            <div>
-              <div class="footer__brand">Handwerk+</div>
-              <div class="footer__muted">Handyman per Abo • Kassel &amp; Umgebung</div>
-            </div>
-
-            <div class="footer__links" aria-label="Rechtliches">
-              <a href="/impressum.html">Impressum</a>
-              <a href="/datenschutz.html">Datenschutz</a>
-              <a href="/agb.html">AGB</a>
+      <section id="kontakt" class="section">
+        <div class="grid">
+          <div class="card" style="grid-column:span 12">
+            <h3>Kontakt</h3>
+            <p>Schreib uns kurz, was du brauchst. (Die Formulare/CRM kannst du später über Apps Script aktivieren.)</p>
+            <div class="cta" style="margin-top:12px">
+              <a class="pill primary" href="https://t.me/uhu.help" target="_blank" rel="noopener">Jetzt in Telegram</a>
+              <a class="pill" href="mailto:k2camperbox@gmail.com">E-Mail senden</a>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="footer__small">
-            © <span id="year"></span> Handwerk+ • Alle Rechte vorbehalten.
-          </div>
-        </section>
-      </div>
-    </section>
-  </main>
+      <footer class="footer">
+        <div>© <span id="y"></span> Handwerk+</div>
+        <div>
+          <a href="/legal/impressum.html">Impressum</a> ·
+          <a href="/legal/datenschutz.html">Datenschutz</a> ·
+          <a href="/legal/agb.html">AGB</a>
+        </div>
+      </footer>
+    </main>
+  </div>
 
-  <script>
-    // ====== CONFIG (Поменяй на свои данные) ======
-    const CONTACT = {
-      telegram: "https://t.me/uhu.help",     // поменяй если нужно
-      email: "k2camperbox@gmail.com",        // поменяй
-      phone: "+4916096527272"                // поменяй
-    };
-
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Quick buttons
-    const tgBtn = document.getElementById("tgBtn");
-    const mailBtn = document.getElementById("mailBtn");
-    const callBtn = document.getElementById("callBtn");
-
-    tgBtn.href = CONTACT.telegram;
-    mailBtn.href = "mailto:" + encodeURIComponent(CONTACT.email);
-    callBtn.href = "tel:" + CONTACT.phone.replace(/\s+/g, "");
-
-    // Form -> opens Telegram with filled text (fallback: mailto)
-    const form = document.getElementById("reqForm");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const text =
-`Handwerk+ Anfrage
-Name: ${fd.get("name")}
-Telefon: ${fd.get("phone")}
-Ort: ${fd.get("city")}
-Sprache: ${fd.get("lang")}
----
-${fd.get("msg")}`;
-
-      const tgShare = "https://t.me/share/url?url=" + encodeURIComponent(location.href) + "&text=" + encodeURIComponent(text);
-      window.open(tgShare, "_blank", "noopener,noreferrer");
-
-      // optional: also open mail
-      // location.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("Handwerk+ Anfrage") + "&body=" + encodeURIComponent(text);
-
-      form.reset();
-    });
-
-    // ====== PWA Install ======
-    let deferredPrompt = null;
-    const installBtn = document.getElementById("installBtn");
-
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.hidden = false;
-    });
-
-    installBtn?.addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installBtn.hidden = true;
-    });
-
-    // ====== Service Worker ======
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js").catch(() => {});
-      });
-    }
-  </script>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script src="/config.js"></script>
+  <script src="/app.js"></script>
 </body>
 </html>
