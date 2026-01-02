@@ -115,3 +115,14 @@ a{color:inherit}
   .hero h1{font-size:34px}
   .card{grid-column: span 12}
 }
+
+
+/* Language switch */
+.lang{display:flex;gap:8px;align-items:center;}
+.pill.langbtn{padding:10px 12px;min-width:44px;justify-content:center;}
+.pill.langbtn.active{border-color: rgba(255,255,255,.55); box-shadow: 0 10px 18px rgba(0,0,0,.25);}
+
+
+/* Language switch */
+.langbtn{min-width:44px;}
+.langbtn.is-active{background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.30);}
