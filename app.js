@@ -1,233 +1,121 @@
-// app.js
+// Handwerk+ v8 — language + micro-motion
 (() => {
-  const $ = (s, el = document) => el.querySelector(s);
-  const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+  const $ = (q, el=document) => el.querySelector(q);
+  const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
 
-  // ---------- i18n ----------
-  const I18N = {
-    de: {
-      "brand.tagline": "Handyman per Abo",
-      "nav.start": "Start",
-      "nav.services": "Leistungen",
-      "nav.abo": "Abo",
-      "nav.contact": "Kontakt",
-      "nav.partner": "Franchise/Partner",
-      "nav.account": "Kundenkonto",
-      "nav.admin": "Admin",
-      "nav.install": "Install",
-      "nav.cta": "Jetzt Anfrage",
-      "hero.title": "Handwerk+ — Handyman per Abo",
-      "hero.subtitle": "Schnell. Zuverlässig. Transparent. Für Kassel & Umgebung — skalierbar als Franchise.",
-      "hero.btn_request": "Jetzt Anfrage senden",
-      "hero.btn_partner": "Partner werden",
-      "badges.reply": "24–48h Rückmeldung",
-      "badges.prices": "Fixe Abo-Preise",
-      "badges.verified": "Geprüfte Partner",
-      "badges.langs": "Mehrsprachig: DE/UA/RU",
-      "sec.services": "Leistungen",
-      "sec.abo": "Abo",
-      "sec.partner": "Franchise/Partner",
-      "sec.contact": "Kontakt",
-      "contact.text": "Schreib uns kurz, was du brauchst. (Die Formulare/CRM kannst du später über Apps Script aktivieren.)",
-      "contact.telegram": "Jetzt in Telegram",
-      "contact.email": "E-Mail senden",
-      "legal.impressum": "Impressum",
-      "legal.datenschutz": "Datenschutz",
-      "legal.agb": "AGB",
+  const i18n = {
+    de: { nav_start:"Start", nav_services:"Leistungen", nav_abo:"Abo", nav_contact:"Kontakt", nav_franchise:"Franchise/Partner", nav_account:"Kundenkonto",
+      cta:"Jetzt Anfrage", h1:"Handwerk+ — Handyman per Abo",
+      lead:"Schnell. Zuverlässig. Transparent. Für Kassel & Umgebung — skalierbar als Franchise.",
+      btn_send:"Jetzt Anfrage senden", btn_partner:"Partner werden",
+      b1:"24–48h Rückmeldung", b2:"Fixe Abo-Preise", b3:"Geprüfte Partner", b4:"Mehrsprachig: DE/UA/RU",
+      s1:"Leistungen", s2:"Abo-Modelle", s3:"Franchise / Partner", s4:"Kundenkonto",
+      f_title:"Anfrage senden", f_sub:"Schnell. Ohne Registrierung. Wir antworten in 24–48 Stunden.",
+      f_name:"Name", f_phone:"Telefon / WhatsApp", f_city:"PLZ / Ort", f_lang:"Sprache", f_msg:"Worum geht’s?", f_submit:"Senden",
+      legal_im:"Impressum", legal_ds:"Datenschutz", legal_agb:"AGB"
     },
-    uk: {
-      "brand.tagline": "Майстер за підпискою",
-      "nav.start": "Старт",
-      "nav.services": "Послуги",
-      "nav.abo": "Підписка",
-      "nav.contact": "Контакти",
-      "nav.partner": "Франшиза/Партнер",
-      "nav.account": "Кабінет",
-      "nav.admin": "Адмін",
-      "nav.install": "Встановити",
-      "nav.cta": "Заявка",
-      "hero.title": "Handwerk+ — Майстер за підпискою",
-      "hero.subtitle": "Швидко. Надійно. Прозоро. Для Касселя та околиць — масштабовано як франшиза.",
-      "hero.btn_request": "Надіслати заявку",
-      "hero.btn_partner": "Стати партнером",
-      "badges.reply": "Відповідь 24–48 год",
-      "badges.prices": "Фіксовані ціни",
-      "badges.verified": "Перевірені партнери",
-      "badges.langs": "Мови: DE/UA/RU",
-      "sec.services": "Послуги",
-      "sec.abo": "Підписка",
-      "sec.partner": "Франшиза/Партнер",
-      "sec.contact": "Контакти",
-      "contact.text": "Коротко напишіть, що потрібно. (Форми/CRM можна підключити пізніше через Apps Script.)",
-      "contact.telegram": "Написати в Telegram",
-      "contact.email": "Надіслати email",
-      "legal.impressum": "Impressum",
-      "legal.datenschutz": "Datenschutz",
-      "legal.agb": "AGB",
+    ua: { nav_start:"Старт", nav_services:"Послуги", nav_abo:"Підписка", nav_contact:"Контакти", nav_franchise:"Франшиза/Партнер", nav_account:"Кабінет",
+      cta:"Заявка", h1:"Handwerk+ — Майстер за підпискою",
+      lead:"Швидко. Надійно. Прозоро. Для Касселя та околиць — масштабується як франшиза.",
+      btn_send:"Відправити заявку", btn_partner:"Стати партнером",
+      b1:"Відповідь 24–48 год", b2:"Фікс ціни", b3:"Перевірені партнери", b4:"Мови: DE/UA/RU",
+      s1:"Послуги", s2:"Тарифи підписки", s3:"Франшиза / Партнер", s4:"Кабінет",
+      f_title:"Надіслати заявку", f_sub:"Швидко. Без реєстрації. Відповімо за 24–48 год.",
+      f_name:"Імʼя", f_phone:"Телефон / WhatsApp", f_city:"Індекс / Місто", f_lang:"Мова", f_msg:"Що потрібно зробити?", f_submit:"Надіслати",
+      legal_im:"Impressum", legal_ds:"Datenschutz", legal_agb:"AGB"
     },
-    ru: {
-      "brand.tagline": "Мастер по подписке",
-      "nav.start": "Старт",
-      "nav.services": "Услуги",
-      "nav.abo": "Подписка",
-      "nav.contact": "Контакты",
-      "nav.partner": "Франшиза/Партнёр",
-      "nav.account": "Кабинет",
-      "nav.admin": "Админ",
-      "nav.install": "Установить",
-      "nav.cta": "Заявка",
-      "hero.title": "Handwerk+ — Мастер по подписке",
-      "hero.subtitle": "Быстро. Надёжно. Прозрачно. Для Касселя и окрестностей — масштабируется как франшиза.",
-      "hero.btn_request": "Отправить заявку",
-      "hero.btn_partner": "Стать партнёром",
-      "badges.reply": "Ответ 24–48 ч",
-      "badges.prices": "Фикс цены",
-      "badges.verified": "Проверенные партнёры",
-      "badges.langs": "Языки: DE/UA/RU",
-      "sec.services": "Услуги",
-      "sec.abo": "Подписка",
-      "sec.partner": "Франшиза/Партнёр",
-      "sec.contact": "Контакты",
-      "contact.text": "Коротко напишите, что нужно. (Формы/CRM можно подключить позже через Apps Script.)",
-      "contact.telegram": "Написать в Telegram",
-      "contact.email": "Отправить email",
-      "legal.impressum": "Impressum",
-      "legal.datenschutz": "Datenschutz",
-      "legal.agb": "AGB",
+    ru: { nav_start:"Старт", nav_services:"Услуги", nav_abo:"Подписка", nav_contact:"Контакты", nav_franchise:"Франшиза/Партнёр", nav_account:"Кабинет",
+      cta:"Заявка", h1:"Handwerk+ — Мастер по подписке",
+      lead:"Быстро. Надёжно. Прозрачно. Для Касселя и окрестностей — масштабируется как франшиза.",
+      btn_send:"Отправить заявку", btn_partner:"Стать партнёром",
+      b1:"Ответ 24–48 ч", b2:"Фикс цены", b3:"Проверенные партнёры", b4:"Языки: DE/UA/RU",
+      s1:"Услуги", s2:"Тарифы подписки", s3:"Франшиза / Партнёр", s4:"Кабинет",
+      f_title:"Отправить заявку", f_sub:"Быстро. Без регистрации. Ответим в течение 24–48 часов.",
+      f_name:"Имя", f_phone:"Телефон / WhatsApp", f_city:"Индекс / Город", f_lang:"Язык", f_msg:"Что нужно сделать?", f_submit:"Отправить",
+      legal_im:"Impressum", legal_ds:"Datenschutz", legal_agb:"AGB"
     }
   };
 
-  function applyLang(lang) {
-    const dict = I18N[lang] || I18N.de;
+  function applyLang(lang){
+    const dict = i18n[lang] || i18n.de;
+    document.documentElement.lang = (lang === "ua" ? "uk" : lang);
 
-    // set <html lang="">
-    document.documentElement.setAttribute("lang", lang === "uk" ? "uk" : (lang === "ru" ? "ru" : "de"));
+    const setText = (sel, val) => { const el=$(sel); if(el) el.textContent = val; };
+    ["nav_start","nav_services","nav_abo","nav_contact","nav_franchise","nav_account","cta",
+     "h1","lead","btn_send","btn_partner","b1","b2","b3","b4","s1","s2","s3","s4","f_title","f_sub","f_submit",
+     "legal_im","legal_ds","legal_agb"].forEach(key => setText(`[data-i18n='${key}']`, dict[key]));
 
-    // update active language buttons
-    $$("[data-set-lang]").forEach(b => {
-      const isOn = b.getAttribute("data-set-lang") === lang;
-      b.classList.toggle("is-active", isOn);
-      b.setAttribute("aria-pressed", isOn ? "true" : "false");
-    });
+    const name = $("[name='name']");
+    const phone = $("[name='phone']");
+    const city = $("[name='city']");
+    const msg  = $("[name='msg']");
+    if(name) name.placeholder = (lang==="de"?"Vor- und Nachname":lang==="ua"?"Імʼя та прізвище":"Имя и фамилия");
+    if(phone) phone.placeholder = "+49…";
+    if(city) city.placeholder = (lang==="de"?"z.B. 34117 Kassel":"напр. 34117 Kassel");
+    if(msg) msg.placeholder  = (lang==="de"?"Kurz beschreiben (z.B. Möbelaufbau…)":lang==="ua"?"Коротко опишіть (напр. монтаж меблів…)":"Коротко опишите (напр. сборка мебели…)");
 
-    // translate nodes
-    $$("[data-i18n]").forEach(el => {
-      const key = el.getAttribute("data-i18n");
-      const val = dict[key];
-      if (typeof val === "string") el.textContent = val;
-    });
+    ["f_name","f_phone","f_city","f_lang","f_msg"].forEach(key => setText(`[data-i18n='${key}']`, dict[key]));
 
-    try { localStorage.setItem("hp_lang", lang); } catch {}
+    $$(".lang").forEach(b => b.classList.toggle("is-active", b.dataset.lang === lang));
+    localStorage.setItem("hw_lang", lang);
   }
 
-  function initLang() {
-    const saved = (() => { try { return localStorage.getItem("hp_lang"); } catch { return null; } })();
-    const initial = saved && I18N[saved] ? saved : "de";
-    applyLang(initial);
+  applyLang(localStorage.getItem("hw_lang") || "de");
+  $$(".lang").forEach(btn => btn.addEventListener("click", () => applyLang(btn.dataset.lang)));
 
-    $$("[data-set-lang]").forEach(btn => {
-      btn.addEventListener("click", () => applyLang(btn.getAttribute("data-set-lang")));
-    });
+  // reveal on scroll
+  const items = $$(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("inview"); });
+    }, { threshold: 0.12, rootMargin: "0px 0px -10% 0px" });
+    items.forEach(el => io.observe(el));
+  } else {
+    items.forEach(el => el.classList.add("inview"));
   }
 
-  // ---------- Smooth scroll ----------
-  function initScroll() {
-    $$("[data-scroll]").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const target = btn.getAttribute("data-scroll");
-        const el = document.getElementById(target);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-        history.replaceState(null, "", `#${target}`);
-      });
-    });
-  }
-
-  // ---------- Mobile menu ----------
-  function initMenu() {
-    const btn = $("#btnMenu");
-    const menu = $("#mainMenu");
-    if (!btn || !menu) return;
-
-    const close = () => {
-      menu.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-    };
-
-    const toggle = () => {
-      const isOpen = menu.classList.toggle("open");
-      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    };
-
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      toggle();
-    });
-
-    // close when clicking any menu item
-    menu.addEventListener("click", (e) => {
-      const t = e.target;
-      if (!(t instanceof HTMLElement)) return;
-      if (t.closest("a") || t.closest("button")) {
-        // allow click to proceed, but close menu (esp. on mobile)
-        setTimeout(close, 0);
-      }
-    });
-
-    // close on outside click
-    document.addEventListener("click", (e) => {
-      const t = e.target;
-      if (!(t instanceof HTMLElement)) return;
-      if (t === btn || btn.contains(t) || menu.contains(t)) return;
-      close();
-    });
-
-    // close when resizing to desktop
-    window.addEventListener("resize", () => {
-      if (window.matchMedia("(min-width: 821px)").matches) close();
-    });
-  }
-
-  // ---------- PWA install ----------
-  function initInstall() {
-    const installBtn = $("#btnInstall");
-    if (!installBtn) return;
-
-    let deferredPrompt = null;
-
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = "inline-flex";
-    });
-
-    installBtn.addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice.catch(() => {});
-      deferredPrompt = null;
-      installBtn.style.display = "none";
-    });
-  }
-
-  // ---------- SW ----------
-  function initSW() {
-    if (!("serviceWorker" in navigator)) return;
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("/sw.js").then((reg) => {
-        // Ask the browser to check for SW updates (helps with cached old bundles)
-        try { reg.update(); } catch {}
-      }).catch(() => {});
-    });
-  }
-
-  // boot
-  document.addEventListener("DOMContentLoaded", () => {
-    initLang();
-    initMenu();
-    initScroll();
-    initInstall();
-    initSW();
+  // PWA install
+  let deferredPrompt = null;
+  const installBtn = $("#installBtn");
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if(installBtn) installBtn.hidden = false;
   });
+  installBtn?.addEventListener("click", async () => {
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installBtn.hidden = true;
+  });
+
+  // form -> telegram share
+  const form = $("#reqForm");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const lang = (localStorage.getItem("hw_lang") || "de").toUpperCase();
+    const text =
+`Handwerk+ Anfrage (${lang})
+Name: ${fd.get("name")}
+Telefon: ${fd.get("phone")}
+Ort: ${fd.get("city")}
+Sprache: ${fd.get("lang")}
+---
+${fd.get("msg")}`;
+    const tgShare = "https://t.me/share/url?url=" + encodeURIComponent(location.href) + "&text=" + encodeURIComponent(text);
+    window.open(tgShare, "_blank", "noopener,noreferrer");
+    form.reset();
+  });
+
+  const year = $("#year");
+  if(year) year.textContent = new Date().getFullYear();
+
+  // SW register
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js").catch(()=>{});
+    });
+  }
 })();

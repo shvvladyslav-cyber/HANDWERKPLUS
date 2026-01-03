@@ -3,155 +3,183 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Handwerk+ — Handyman per Abo (Deutschland)</title>
-  <meta name="description" content="Handwerk+ in Deutschland: Handyman per Abo. Schnell. Zuverlässig. Transparent. Für Kassel & Umgebung — skalierbar als Franchise." />
   <meta name="theme-color" content="#0a0f22" />
   <meta name="color-scheme" content="dark" />
 
-  <!-- PWA -->
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" href="/icons/icon-192.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <title>Handwerk+ — Handyman per Abo</title>
+  <meta name="description" content="Handwerk+ — Handyman per Abo. Schnell. Zuverlässig. Transparent. Für Kassel & Umgebung — skalierbar als Franchise." />
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
   <link rel="stylesheet" href="/assets/styles.css" />
 </head>
 <body>
-  <div class="container">
-    <header class="nav" id="top">
-      <a class="brand" href="/" aria-label="Handwerk+">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="title">
-          <b>Handwerk+</b>
-          <span data-i18n="brand.tagline">Handyman per Abo</span>
+  <header class="top">
+    <div class="top__inner">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true"></div>
+        <div class="brand__text">
+          <div class="brand__name">Handwerk+</div>
+          <div class="brand__tag">Handyman per Abo</div>
         </div>
-      </a>
-
-      <div class="navRight">
-        <div class="langbar" role="group" aria-label="Language">
-          <button class="langchip" type="button" data-set-lang="de" aria-pressed="false">DE</button>
-          <button class="langchip" type="button" data-set-lang="uk" aria-pressed="false">UA</button>
-          <button class="langchip" type="button" data-set-lang="ru" aria-pressed="false">RU</button>
-        </div>
-        <button class="menuToggle" id="btnMenu" type="button" aria-expanded="false" aria-controls="mainMenu" title="Menu" aria-label="Menu">☰</button>
       </div>
 
-      <nav class="pills" id="mainMenu" aria-label="Navigation">
-        <a class="pill" href="#start" data-scroll="start" data-i18n="nav.start">Start</a>
-        <a class="pill" href="#leistungen" data-scroll="leistungen" data-i18n="nav.services">Leistungen</a>
-        <a class="pill" href="#abo" data-scroll="abo" data-i18n="nav.abo">Abo</a>
-        <a class="pill" href="#kontakt" data-scroll="kontakt" data-i18n="nav.contact">Kontakt</a>
-        <a class="pill" href="#partner" data-scroll="partner" data-i18n="nav.partner">Franchise/Partner</a>
-        <a class="pill" href="/cabinet/" title="Kundenkonto (optional)" data-i18n="nav.account">Kundenkonto</a>
-        <a class="pill" href="/admin/" title="Admin (optional)" data-i18n="nav.admin">Admin</a>
-        <button class="pill" id="btnInstall" style="display:none" type="button" data-i18n="nav.install">Install</button>
-        <a class="pill pill-accent" href="#kontakt" data-scroll="kontakt" data-i18n="nav.cta">Jetzt Anfrage</a>
+      <div class="langs" aria-label="Language">
+        <button class="lang" type="button" data-lang="de">DE</button>
+        <button class="lang" type="button" data-lang="ua">UA</button>
+        <button class="lang" type="button" data-lang="ru">RU</button>
+      </div>
+
+      <nav class="nav" aria-label="Navigation">
+        <a href="#start" data-i18n="nav_start">Start</a>
+        <a href="#leistungen" data-i18n="nav_services">Leistungen</a>
+        <a href="#abo" data-i18n="nav_abo">Abo</a>
+        <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
+        <a href="#franchise" data-i18n="nav_franchise">Franchise/Partner</a>
+        <a href="#konto" data-i18n="nav_account">Kundenkonto</a>
       </nav>
-    </header>
 
-    <main>
-      <section id="start" class="hero">
-        <h1 data-i18n="hero.title">Handwerk+ — Handyman per Abo</h1>
-        <p data-i18n="hero.subtitle">Schnell. Zuverlässig. Transparent. Für Kassel &amp; Umgebung — skalierbar als Franchise.</p>
+      <div class="top__actions">
+        <button id="installBtn" class="chip" type="button" hidden>Install</button>
+        <a class="cta" href="#anfrage" data-i18n="cta">Jetzt Anfrage</a>
+      </div>
+    </div>
+  </header>
 
-        <div class="cta">
-          <a class="pill primary" href="#kontakt" data-scroll="kontakt" data-i18n="hero.btn_request">Jetzt Anfrage senden</a>
-          <a class="pill" href="#partner" data-scroll="partner" data-i18n="hero.btn_partner">Partner werden</a>
+  <main class="hero" id="start">
+    <div class="hero__anim" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <section class="card hero__card reveal">
+        <h1 class="h1" data-i18n="h1">Handwerk+ — Handyman per Abo</h1>
+        <p class="lead" data-i18n="lead">Schnell. Zuverlässig. Transparent. Für Kassel &amp; Umgebung — skalierbar als Franchise.</p>
+
+        <div class="btns">
+          <a class="btn btn--primary" href="#anfrage" data-i18n="btn_send">Jetzt Anfrage senden</a>
+          <a class="btn" href="#franchise" data-i18n="btn_partner">Partner werden</a>
         </div>
 
-        <div class="badges" aria-label="Highlights">
-          <div class="badge" data-i18n="badges.reply">24–48h Rückmeldung</div>
-          <div class="badge" data-i18n="badges.prices">Fixe Abo-Preise</div>
-          <div class="badge" data-i18n="badges.verified">Geprüfte Partner</div>
-          <div class="badge" data-i18n="badges.langs">Mehrsprachig: DE/UA/RU</div>
-        </div>
-      </section>
-
-      <section id="leistungen" class="section">
-        <div class="grid">
-          <div class="card">
-            <h3>Alltag & Wohnung</h3>
-            <p>Montage, kleine Reparaturen, Silikon, Türen/Schlösser, Lampen, Regale.</p>
-            <ul>
-              <li>Aufbau & Montage</li>
-              <li>Kleine Elektro-/Sanitärarbeiten (ohne Meisterpflicht)</li>
-              <li>Transport & Entsorgung (nach Absprache)</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Umzug & Service</h3>
-            <p>Hilfe beim Umzug, Möbel zerlegen/aufbauen, Bohrarbeiten, kleinere Renovierung.</p>
-            <ul>
-              <li>Termin + Festpreis (nach Angebot)</li>
-              <li>Schnelle Kommunikation</li>
-              <li>Dokumentierte Leistungen</li>
-            </ul>
-          </div>
+        <div class="badges">
+          <span class="badge" data-i18n="b1">24–48h Rückmeldung</span>
+          <span class="badge" data-i18n="b2">Fixe Abo-Preise</span>
+          <span class="badge" data-i18n="b3">Geprüfte Partner</span>
+          <span class="badge" data-i18n="b4">Mehrsprachig: DE/UA/RU</span>
         </div>
       </section>
 
-      <section id="abo" class="section">
-        <div class="grid">
-          <div class="card">
-            <h3>Standard</h3>
-            <p>Für kleine Aufgaben im Alltag.</p>
-            <ul>
-              <li>Reaktionszeit: 48h</li>
-              <li>1 Besuch / Monat</li>
-              <li>Priorität: normal</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Premium / VIP</h3>
-            <p>Wenn es schneller gehen muss.</p>
-            <ul>
-              <li>Reaktionszeit: 24h</li>
-              <li>2–4 Besuche / Monat</li>
-              <li>Priorität: hoch</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <div class="grid">
+        <section id="leistungen" class="card reveal">
+          <h2 class="h2" data-i18n="s1">Leistungen</h2>
+          <ul class="list">
+            <li>Möbelaufbau &amp; Montage</li>
+            <li>Kleine Reparaturen (Haushalt)</li>
+            <li>Bohrarbeiten, Regale, TV-Halter</li>
+            <li>Silikon/Fugen, Ausbesserungen</li>
+            <li>Umzug-Hilfe (light)</li>
+          </ul>
+          <p class="p muted">Hinweis: Elektro-/Gas-/Wasser-Arbeiten nur nach Vorschriften oder durch Fachbetriebe.</p>
+        </section>
 
-      <section id="partner" class="section">
-        <div class="grid">
-          <div class="card" style="grid-column:span 12">
-            <h3>Franchise / Partner</h3>
-            <p>Du bist Handwerker oder Service-Profi? Werde Partner — wir liefern Leads & Prozesse.</p>
-            <div class="cta" style="margin-top:12px">
-              <a class="pill" href="#kontakt" data-scroll="kontakt">Partner-Anfrage</a>
-              <a class="pill" href="https://t.me/uhu.help" target="_blank" rel="noopener">Telegram</a>
+        <section id="abo" class="card reveal">
+          <h2 class="h2" data-i18n="s2">Abo-Modelle</h2>
+          <div class="tiers">
+            <div class="tier">
+              <div class="tier__top"><div class="tier__name">Standard</div><div class="tier__price">ab XX€</div></div>
+              <div class="tier__desc">Für kleine Aufgaben &amp; Routine-Hilfe.</div>
+            </div>
+            <div class="tier tier--hot">
+              <div class="tier__top"><div class="tier__name">Premium</div><div class="tier__price">ab XX€</div></div>
+              <div class="tier__desc">Priorität + mehr Flexibilität.</div>
+            </div>
+            <div class="tier">
+              <div class="tier__top"><div class="tier__name">VIP</div><div class="tier__price">ab XX€</div></div>
+              <div class="tier__desc">Maximale Verfügbarkeit.</div>
             </div>
           </div>
-        </div>
-      </section>
+          <p class="p muted">Tipp: XX€ заменишь на свои цены.</p>
+        </section>
 
-      <section id="kontakt" class="section">
-        <div class="grid">
-          <div class="card" style="grid-column:span 12">
-            <h3 data-i18n="sec.contact">Kontakt</h3>
-            <p data-i18n="contact.text">Schreib uns kurz, was du brauchst. (Die Formulare/CRM kannst du später über Apps Script aktivieren.)</p>
-            <div class="cta" style="margin-top:12px">
-              <a class="pill primary" href="https://t.me/uhu.help" target="_blank" rel="noopener" data-i18n="contact.telegram">Jetzt in Telegram</a>
-              <a class="pill" href="mailto:k2camperbox@gmail.com" data-i18n="contact.email">E-Mail senden</a>
+        <section id="franchise" class="card franchise-accent reveal">
+          <h2 class="h2" data-i18n="s3">Franchise / Partner</h2>
+          <p class="p">Du bist Handwerker oder Service-Profi? Werde Partner — wir liefern Leads &amp; Prozesse.</p>
+          <div class="btns" style="margin-top:10px">
+            <a class="btn btn--primary" href="#anfrage">Partner-Anfrage</a>
+            <a class="btn" href="#kontakt">Kontakt</a>
+          </div>
+        </section>
+
+        <section id="konto" class="card reveal">
+          <h2 class="h2" data-i18n="s4">Kundenkonto</h2>
+          <p class="p muted">Placeholder — später подключим CRM/Google Sheets/Telegram.</p>
+          <div class="btns" style="margin-top:10px">
+            <a class="btn" href="#anfrage">Neue Anfrage</a>
+            <a class="btn" href="#abo">Abo wählen</a>
+          </div>
+        </section>
+
+        <section id="anfrage" class="card form reveal" style="grid-column: span 12;">
+          <h2 class="h2" data-i18n="f_title">Anfrage senden</h2>
+          <p class="p muted" data-i18n="f_sub">Schnell. Ohne Registrierung. Wir antworten in 24–48 Stunden.</p>
+
+          <form id="reqForm" autocomplete="on">
+            <div class="row">
+              <label class="field">
+                <span data-i18n="f_name">Name</span>
+                <input name="name" type="text" required />
+              </label>
+              <label class="field">
+                <span data-i18n="f_phone">Telefon / WhatsApp</span>
+                <input name="phone" type="tel" required />
+              </label>
             </div>
+
+            <div class="row">
+              <label class="field">
+                <span data-i18n="f_city">PLZ / Ort</span>
+                <input name="city" type="text" required />
+              </label>
+              <label class="field">
+                <span data-i18n="f_lang">Sprache</span>
+                <select name="lang" required>
+                  <option value="DE">Deutsch</option>
+                  <option value="UA">Українська</option>
+                  <option value="RU">Русский</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="field">
+              <span data-i18n="f_msg">Worum geht’s?</span>
+              <textarea name="msg" rows="5" required></textarea>
+            </label>
+
+            <div class="btns" style="margin-top:14px">
+              <button class="btn btn--primary" type="submit" data-i18n="f_submit">Senden</button>
+              <a class="btn" href="https://t.me/uhu.help" target="_blank" rel="noopener">Telegram</a>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <footer id="kontakt" class="card footer reveal">
+        <div class="footer__grid">
+          <div>
+            <div class="footer__brand">Handwerk+</div>
+            <div class="footer__muted">Handyman per Abo • Kassel &amp; Umgebung</div>
+          </div>
+          <div class="footer__links">
+            <a href="/legal/impressum.html" data-i18n="legal_im">Impressum</a>
+            <a href="/legal/datenschutz.html" data-i18n="legal_ds">Datenschutz</a>
+            <a href="/legal/agb.html" data-i18n="legal_agb">AGB</a>
           </div>
         </div>
-      </section>
-
-      <footer class="footer">
-        <div>© <span id="y"></span> Handwerk+</div>
-        <div>
-          <a href="/legal/impressum.html" data-i18n="legal.impressum">Impressum</a> ·
-          <a href="/legal/datenschutz.html" data-i18n="legal.datenschutz">Datenschutz</a> ·
-          <a href="/legal/agb.html" data-i18n="legal.agb">AGB</a>
-        </div>
+        <div class="footer__small">© <span id="year"></span> Handwerk+ • Alle Rechte vorbehalten.</div>
       </footer>
-    </main>
-  </div>
+    </div>
+  </main>
 
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
-  <script src="/config.js"></script>
-  <script src="/app.js" defer></script>
+  <script src="/app.js"></script>
 </body>
 </html>
